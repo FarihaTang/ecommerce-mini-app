@@ -1,14 +1,15 @@
-import { type Product } from '../api/productPI';
+import { useNavigate } from 'react-router-dom';
+import { type Product } from '../api/productApi';
 
 type ProductCardProps = {
   product: Product;
-  onClick?: () => void;
 };
-export function ProductCard({ product, onClick }: ProductCardProps) {
+export function ProductCard({ product }: ProductCardProps) {
+  const navigate = useNavigate();
   return (
     <button
       type="button"
-      onClick={onClick}
+      onClick={() => navigate(`/product/${product.id}`)}
       className="text-left border rounded-xl bg-white shadow-sm hover:shadow-md transition p-4 flex flex-col gap-3"
     >
       <div className="w-full h-40 felx items-center justify-center">

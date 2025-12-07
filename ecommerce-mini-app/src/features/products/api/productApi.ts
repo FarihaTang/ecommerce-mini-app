@@ -20,3 +20,8 @@ export async function fetchCategories(): Promise<string[]> {
   const res = await axios.get<string[]>('https://fakestoreapi.com/products/categories');
   return res.data;
 }
+
+export async function fetchProduct(id: number): Promise<Product> {
+  const res = await axios.get<Product>(`https://fakestoreapi.com/products/${id}`);
+  return res.data;
+}
