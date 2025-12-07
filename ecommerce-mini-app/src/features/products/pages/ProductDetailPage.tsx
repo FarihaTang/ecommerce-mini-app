@@ -1,7 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { useProductQuery } from '../hooks/useProductQuery';
+import { useCartStore } from '@/features/cart/store/useCartStore';
 
 export default function ProductDetailPage() {
+  const addItem = useCartStore(state => state.addItem);
   const { id } = useParams();
   const productId = Number(id);
   const { data, isLoading, isError } = useProductQuery(productId);
@@ -28,7 +30,20 @@ export default function ProductDetailPage() {
           <p className="text-sm text-gray-500 capitalize">Category: {data.category}</p>
 
           {/* Add to Cart - we will add Zustand later */}
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-lg">Add to Cart</button>
+          <button
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg"
+            onClick={() =>
+              addItem({
+                id: data.id,
+                title: data.title,
+                price: data.price,
+                image: data.image,
+                quantity: 1,
+              })
+            }
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
