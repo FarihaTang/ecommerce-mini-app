@@ -10,15 +10,16 @@ export default function CartDrawer() {
       <div
         onClick={closeCart}
         className={`fixed inset-0 bg-black/40 transition-opacity duration-300 ${
-          isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
       />
 
       {/* Drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-80 bg-white shadow-xl p-6 flex flex-col transition-transform duration-300 ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed top-0 right-0 h-full w-[90%] max-w-[380px] md:max-w-[420px] bg-white shadow-xl p-6 flex flex-col 
+         transition-transform duration-300 ease-drawer ${
+           isOpen ? 'translate-x-0' : 'translate-x-full'
+         }`}
       >
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
