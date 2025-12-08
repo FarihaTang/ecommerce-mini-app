@@ -17,7 +17,7 @@ export default function CartDrawer() {
       {/* Drawer */}
       <div
         className={`fixed top-0 right-0 h-full w-[90%] max-w-[380px] md:max-w-[420px] bg-white shadow-xl p-6 flex flex-col 
-         transition-transform duration-300 ease-drawer ${
+         transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
            isOpen ? 'translate-x-0' : 'translate-x-full'
          }`}
       >
@@ -30,7 +30,11 @@ export default function CartDrawer() {
         </div>
 
         {/* Items */}
-        <div className="flex-1 overflow-y-auto space-y-4">
+        <div
+          className={`flex-1 overflow-y-auto space-y-4 ${
+            isOpen ? 'animate-[fadeIn_.3s_ease-out]' : ''
+          }`}
+        >
           {items.length === 0 && <p className="text-gray-500">Your cart is empty.</p>}
 
           {items.map(item => (
