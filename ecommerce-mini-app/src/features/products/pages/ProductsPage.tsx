@@ -3,6 +3,8 @@ import { ProductCard } from '../components/ProductCard';
 import { useState } from 'react';
 import { useCategoriesQuery } from '../hooks/useCategoriesQuery';
 import { FilterPanel } from '../components/FilterPanel';
+import { Pagination } from '@/components/Pagination';
+import { usePagination } from '@/hooks/usePagination';
 export default function ProductsPage() {
   const { data, isLoading, isError } = useProductsQuery();
 
@@ -24,6 +26,12 @@ export default function ProductsPage() {
   }
 
   const { data: categories = [] } = useCategoriesQuery();
+
+  // Pagination
+  const { page, pageSize, setPage } = usePagination();
+  const totalPages = Math.ceil(filtered.length / pageSize);
+  const paginatedData = filtered.slice((page - 1) * pageSize, page * pageSize);
+
   if (isLoading) {
     return (
       <div className="space-y-6">
@@ -62,10 +70,18 @@ export default function ProductsPage() {
         onSortChange={setSort}
       ></FilterPanel>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {filtered?.map(product => {
+        {paginatedData?.map(product => {
           return <ProductCard key={product.id} product={product}></ProductCard>;
         })}
       </div>
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        onPageChange={p => {
+          setPage(p);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      ></Pagination>
     </div>
   );
 }
