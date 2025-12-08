@@ -63,7 +63,7 @@ export default function ProductsPage() {
         onSearch={setKeyword}
         onSortChange={setSort}
       ></FilterPanel>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {paginatedData?.map(product => {
           return <ProductCard key={product.id} product={product}></ProductCard>;
         })}
