@@ -1,73 +1,102 @@
-# React + TypeScript + Vite
+# 🛍️ E-commerce Mini App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React + TypeScript front-end shopping experience, built as part of my portfolio.  
+This project focuses on clean architecture, responsive UI, state management, and real-world
+e-commerce interactions.
 
-Currently, two official plugins are available:
+Live Demo: (your Vercel URL)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19** (Server-friendly, modern APIs)
+- **TypeScript** (Strict mode, fully typed components)
+- **React Router v7** (Client-side navigation & nested layouts)
+- **Zustand** (Cart state management)
+- **React Query** (Data fetching, caching, mutations)
+- **Tailwind CSS v4** (Responsive UI, animations)
+- **FakeStore API** for product data
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 🛒 Shopping Experience
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Product listing with filtering & search
+- Detailed product page
+- Add to Cart / Remove / Quantity updates
+- Persistent cart using Zustand store
+- Cart Drawer with smooth animations (slide-in, overlay blur, ESC close)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 📱 Fully Responsive Layout
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Mobile-first grid (2 → 3 → 4 → 5 columns)
+- Drawer behavior adapts to screen size
+- Flexible product image scaling
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### ⚡ Modern UX Enhancements
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Skeleton loading states (cards & details)
+- Pagination with ellipsis (`1 ... 4 5 6 ... 10`)
+- Error state with Retry logic
+- Smooth animations with Tailwind transitions
+
+---
+
+## 🧱 Project Structure
+
+src/
+├── components/ # Reusable UI components
+├── features/
+│ ├── products/ # Product list, detail, API
+│ ├── cart/ # Zustand store + drawer
+├── hooks/ # Shared hooks
+├── router.tsx # App routes
+├── AppLayout.tsx # Layout with cart + outlet
+
+---
+
+## 🏗️ Architecture Decisions
+
+### **React Query over manual fetch**
+
+- Automatic caching
+- Built-in stale-while-revalidate
+- Mutation support for Add/Edit/Delete
+
+### **Zustand for cart state**
+
+- Minimal and predictable
+- Avoids prop drilling
+- Excellent performance
+
+### **Tailwind v4**
+
+- JIT utility engine
+- Animation utilities
+- Responsive design without custom CSS
+
+---
+
+## 📸 Screenshots
+
+_(Add later after deployment)_
+
+---
+
+## 🧪 Future Improvements
+
+- Checkout page
+- Product gallery + zoom
+- Wishlist support
+- Dark mode
+
+---
+
+## 👩‍💻 Author
+
+**Fariha** — Front-end Developer  
+Portfolio: (your portfolio link)  
+LinkedIn: (your LinkedIn profile)
