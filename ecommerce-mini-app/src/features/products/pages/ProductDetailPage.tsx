@@ -1,13 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { useProductQuery } from '../hooks/useProductQuery';
 import { useCartStore } from '@/features/cart/store/useCartStore';
+import { ProductDetailSkeleton } from '../components/ProductDetailSkeleton';
 
 export default function ProductDetailPage() {
   const addItem = useCartStore(state => state.addItem);
   const { id } = useParams();
   const productId = Number(id);
   const { data, isLoading, isError } = useProductQuery(productId);
-  if (isLoading) return <p className="p-4">Loading...</p>;
+  if (isLoading) return <ProductDetailSkeleton></ProductDetailSkeleton>;
   if (isError || !data) return <p className="p-4 text-red-600">Failed to load.</p>;
   return (
     <div>

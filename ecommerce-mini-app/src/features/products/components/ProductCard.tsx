@@ -10,7 +10,7 @@ export function ProductCard({ product }: ProductCardProps) {
     <button
       type="button"
       onClick={() => navigate(`/product/${product.id}`)}
-      className="text-left border rounded-xl bg-white shadow-sm hover:shadow-md transition p-4 flex flex-col gap-3"
+      className="text-left border rounded-xl bg-white shadow-sm hover:shadow-xl transition p-4 flex flex-col gap-3 animate-[fadeIn_.4s_ease-out] hover:-translate-y-1 hover:scale-[1.02]"
     >
       <div className="w-full h-40 felx items-center justify-center">
         <img src={product.image} alt={product.title} className="max-h-full object-contain"></img>

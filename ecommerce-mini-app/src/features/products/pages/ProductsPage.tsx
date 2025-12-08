@@ -5,6 +5,7 @@ import { useCategoriesQuery } from '../hooks/useCategoriesQuery';
 import { FilterPanel } from '../components/FilterPanel';
 import { Pagination } from '@/components/Pagination';
 import { usePagination } from '@/hooks/usePagination';
+import { SkeletonCard } from '@/components/SkeletonCard';
 export default function ProductsPage() {
   const { data, isLoading, isError } = useProductsQuery();
 
@@ -38,14 +39,7 @@ export default function ProductsPage() {
         <h1 className="text-3xl font-bold">Products</h1>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {Array.from({ length: 8 }).map((_, i) => (
-            <div
-              key={i}
-              className="border rounded-xl p-4 bg-white shadow-sm animate-pulse space-y-3"
-            >
-              <div className="h-40 bg-gray-200 rounded-md" />
-              <div className="h-4 bg-gray-200 rounded w-3/4" />
-              <div className="h-4 bg-gray-200 rounded w-1/2" />
-            </div>
+            <SkeletonCard key={i}></SkeletonCard>
           ))}
         </div>
       </div>
